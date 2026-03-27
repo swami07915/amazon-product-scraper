@@ -9,7 +9,7 @@ from selenium.webdriver.support.wait import WebDriverWait
 import smtplib
 
 
-ask=input("tell 3 key words about you words?\nfirst two should be must things\n1st key:")
+ask=input("tell 3 key words about you product?\nfirst two should be must things\n1st key:")
 ask2=input("2nd key:")
 ask3=input("3rd key:")
 ASK=ask.upper()
