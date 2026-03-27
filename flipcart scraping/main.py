@@ -12,6 +12,7 @@ import smtplib
 ask=input("tell 3 key words about you product?\nfirst two should be must things\n1st key:")
 ask2=input("2nd key:")
 ask3=input("3rd key:")
+your_email=input("what is your email?")
 ASK=ask.upper()
 ASK2=ask2.upper()
 ASK3=ask3.upper()
@@ -34,10 +35,10 @@ cards = wait.until(EC.presence_of_all_elements_located((By.CSS_SELECTOR, "div[da
 # you have to practice this line also
 
 # ohh.click()
-n=0
+no_of_pages=0
 products=[]
-while n<3:
-    ohh = driver.find_element(By.CSS_SELECTOR, "a.s-pagination-next")
+while no_of_pages<3:
+    next_page = driver.find_element(By.CSS_SELECTOR, "a.s-pagination-next")
     cards=driver.find_elements(By.CSS_SELECTOR,"div[role='listitem']")
     print(cards)
     for card in cards:
@@ -71,8 +72,8 @@ while n<3:
 
         except Exception as e:
             pass
-    n+=1
-    ohh.click()
+    no_of_pages+=1
+    next_page.click()
     wait.until(EC.staleness_of(cards[0]))
 
     time.sleep(2)
@@ -84,7 +85,7 @@ with smtplib.SMTP("smtp.gmail.com") as s:
     s.login(user="rudrakshdswami@gmail.com",password="passward")
     s.sendmail(
         from_addr="rudrakshdswami@gmail.com",
-        to_addrs="rudrakshswami931@gmail.com",
+        to_addrs=your_email,
         msg=f"your top 5 products\n\n{topfie}".encode("utf-8")
         )
 
